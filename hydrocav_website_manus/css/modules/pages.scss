@@ -1,0 +1,228 @@
+/* Company Overview Section Specifics */
+.company-overview {
+  background-color: #fff;
+}
+
+.overview-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.overview-text {
+  flex: 1;
+  min-width: 300px;
+  padding-right: 30px;
+}
+
+.overview-image {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+.overview-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease; /* Moved from components as it's specific to this image */
+}
+
+.overview-image:hover img {
+  transform: scale(1.03); /* Moved from components */
+}
+
+/* Product Line Section Specifics */
+.product-line {
+  background-color: var(--light-color);
+  position: relative; /* If needed for pseudo-elements or absolute positioning within */
+}
+
+.product-cards { /* Container for product cards */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Market Applications Section Specifics */
+.market-applications {
+  background-color: #fff;
+}
+
+.applications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Value Propositions Section Specifics */
+.value-propositions {
+  background-color: var(--dark-color);
+  color: var(--light-text);
+}
+
+.value-propositions .section-title h2 { /* Overrides general section title color */
+  color: var(--light-text);
+}
+
+.value-propositions .section-title h2:after { /* Overrides general section title underline color */
+  background: var(--accent-color);
+}
+
+.value-cards { /* Container for value cards */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Market Opportunity Section Specifics */
+.market-opportunity {
+  background-color: #fff;
+}
+
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.opportunity-details {
+  background-color: var(--light-color);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+/* Technology Section Specifics */
+.technology {
+  background: linear-gradient(rgba(0, 119, 182, 0.9), rgba(0, 180, 216, 0.9)), url('/images/tech-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--light-text);
+}
+
+.technology .section-title h2 { /* Overrides general section title color */
+  color: var(--light-text);
+}
+
+.technology .section-title h2:after { /* Overrides general section title underline color */
+  background: var(--light-text);
+}
+
+.tech-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tech-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.tech-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.tech-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Mission Section Specifics */
+.mission {
+  background-color: #fff;
+  text-align: center;
+}
+
+.mission-statement {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  position: relative;
+  padding: 30px;
+}
+
+.mission-statement:before,
+.mission-statement:after {
+  content: '"';
+  font-size: 4rem;
+  color: var(--accent-color);
+  position: absolute;
+  opacity: 0.5;
+}
+
+.mission-statement:before {
+  top: 0;
+  left: 0;
+}
+
+.mission-statement:after {
+  bottom: 0;
+  right: 0;
+}
+
+/* Contact Section Specifics */
+.contact {
+  background-color: var(--light-color);
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-form { /* Styling for the form container itself */
+  flex: 1;
+  min-width: 300px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: var(--light-text);
+  font-size: 1.2rem;
+}
+
+.contact-text h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.form-group { /* Styles for form groups within the contact form */
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}

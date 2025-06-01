@@ -1,88 +1,83 @@
-# Imagery & Media Upgrade Task Log
+# Performance & Code Optimisation Update
 
-This document tracks the changes and updates made during the 'Imagery & Media Upgrade' task for the Hydrocav website.
+This document outlines the significant performance and code structure enhancements applied to the HydroCav website. These changes aim to improve load times, maintainability, and overall user experience.
 
 ## Summary of Changes
 
-The "Imagery & Media Upgrade" task involved several key enhancements to the website's media handling and performance:
+The following key improvements have been implemented:
 
-1.  **Image Optimization**: Replaced original JPG images with new, optimized WebP versions for key visual assets. A new directory (`public/img/optimized/`) was created to house these images.
-2.  **Enhanced User Experience**: Implemented an image hover-scale effect (`.img-hover-lift`) for specified images to improve interactivity.
-3.  **Performance Improvement**: Introduced lazy loading for below-the-fold images using the native `loading="lazy"` attribute with a JavaScript-based Intersection Observer fallback for browsers that do not support it.
-4.  **Future Media Compression Strategy**: Documented a (simulated) standardized process for media compression, targeting specific file sizes to ensure ongoing performance.
+1.  **Code Splitting & Modularization**:
+    *   The monolithic `css/styles.css` was broken down into smaller, feature-based SCSS modules located in `css/modules/` (e.g., `base.scss`, `layout.scss`, `components.scss`, `pages.scss`, `responsive.scss`).
+    *   The main `js/main.js` was refactored into JavaScript modules within `js/modules/` (e.g., `navigation.js`, `animations.js`, `form.js`, `lazyload.js`). The main `js/main.js` now serves as an entry point that imports and initializes these modules.
 
----
+2.  **SCSS Migration**:
+    *   All CSS files were converted to SCSS (`.scss`) to enable the use of variables, nesting, mixins, and better organization. The main SCSS file is `css/styles.scss`, which imports all the SCSS modules.
 
-## File Changes:
+3.  **Build System (Vite)**:
+    *   Vite has been configured as the build tool for the project.
+    *   It handles SCSS compilation to CSS.
+    *   It bundles and minifies JavaScript and CSS for production builds.
+    *   It provides a fast development server with Hot Module Replacement (HMR).
+    *   Output files are generated in the `dist/` directory.
 
-*   **hydrocav_website_manus/index.html**:
-    *   Updated `src` attributes for five key images to point to new WebP versions in `public/img/optimized/`.
-        *   Original `images/company-overview.jpg` -> new `public/img/optimized/company-overview_2x.webp`
-        *   Original `images/inline-unit.jpg` -> new `public/img/optimized/inline-unit_2x.webp`
-        *   Original `images/portable-unit.jpg` -> new `public/img/optimized/portable-unit_2x.webp`
-        *   Original `images/custom-unit.jpg` -> new `public/img/optimized/custom-unit_2x.webp`
-        *   Original `images/technology.jpg` -> new `public/img/optimized/technology_2x.webp`
-    *   Applied the `.img-hover-lift` CSS class to the company overview image and the three product images for a hover-scale effect.
-        *   `public/img/optimized/company-overview_2x.webp`
-        *   `public/img/optimized/inline-unit_2x.webp`
-        *   `public/img/optimized/portable-unit_2x.webp`
-        *   `public/img/optimized/custom-unit_2x.webp`
-    *   Implemented lazy loading for below-the-fold images (product images and technology image):
-        *   Added `loading="lazy"` attribute.
-        *   Changed `src` attribute to `"#"` (placeholder).
-        *   Copied original `src` path to `data-src` attribute.
+4.  **Advanced Image Lazy Loading**:
+    *   Lazy loading has been implemented for all images site-wide.
+    *   The `js/modules/lazyload.js` script manages this, using native `loading="lazy"` where available and falling back to an Intersection Observer.
+    *   Images in `index.html` use `src="#"` as a placeholder, with the actual image path in `data-src`.
 
-*   **hydrocav_website_manus/css/styles.css**:
-    *   Added new CSS class `.img-hover-lift` to provide a scale effect on image hover:
-        ```css
-        .img-hover-lift {
-            transition: transform 0.3s ease-in-out;
-        }
+5.  **Modern Image Formats with Fallback (<picture> Element)**:
+    *   All images in `index.html` now use the `<picture>` HTML element.
+    *   This allows serving modern image formats like AVIF and WebP to supporting browsers, with a fallback to the original JPG/PNG format for older browsers.
+    *   `<source>` elements use `data-srcset` for their respective image formats, which are populated by the `lazyload.js` script.
 
-        .img-hover-lift:hover {
-            transform: scale(1.05);
-        }
-        ```
+## Project Structure Changes
 
-*   **hydrocav_website_manus/js/main.js**:
-    *   Added JavaScript for lazy loading images with an Intersection Observer fallback.
-    *   The script checks if native lazy loading (`loading="lazy"`) is supported.
-        *   If supported, and `data-src` was used with a placeholder `src`, it ensures `src` is set from `data-src`.
-        *   If not supported, it uses an Intersection Observer to load images (swap `data-src` to `src`) when they enter the viewport.
+Key new or modified directories include:
 
-## New Optimized Media Added:
+*   `hydrocav_website_manus/css/modules/`: Contains the new SCSS module files.
+*   `hydrocav_website_manus/js/modules/`: Contains the new JavaScript module files.
+*   `hydrocav_website_manus/public/`: Vite's public directory, currently housing the `images/` folder. Static assets here are served at the root during development and copied to `dist/` during build.
+*   `hydrocav_website_manus/dist/`: The output directory for production builds, generated by Vite. This directory should typically be added to `.gitignore` if not already (though it was added during setup).
+*   `hydrocav_website_manus/node_modules/`: Directory where npm packages (like Vite) are installed. Added to `.gitignore`.
 
-This section lists the new WebP image assets created and integrated during this task. These files are located in the `hydrocav_website_manus/public/img/optimized/` directory.
+## Build and Development Instructions
 
-*   **company-overview_2x.webp**: Optimized WebP version of the company overview image.
-*   **inline-unit_2x.webp**: Optimized WebP version of the inline unit product image. (Lazy-loaded)
-*   **portable-unit_2x.webp**: Optimized WebP version of the portable unit product image. (Lazy-loaded)
-*   **custom-unit_2x.webp**: Optimized WebP version of the custom unit product image. (Lazy-loaded)
-*   **technology_2x.webp**: Optimized WebP version of the technology section image. (Lazy-loaded)
+To work with this project:
 
-## Media Compression
+1.  **Install Dependencies**:
+    Navigate to the `hydrocav_website_manus/` directory in your terminal and run:
+    ```bash
+    npm install
+    ```
+    This will install Vite and other necessary development dependencies listed in `package.json`.
 
-All new WebP images added to the `public/img/optimized/` directory are intended to be optimized to a file size of less than 500 KB each, while maintaining acceptable visual quality.
+2.  **Run Development Server**:
+    To start the Vite development server with HMR:
+    ```bash
+    npm run dev
+    ```
+    You can then access the website, typically at `http://localhost:5173`.
 
-### Hypothetical Compression Process:
+3.  **Build for Production**:
+    To create an optimized production build (minified CSS, JS, etc.):
+    ```bash
+    npm run build
+    ```
+    The output files will be placed in the `hydrocav_website_manus/dist/` directory.
 
-The WebP images were notionally optimized using a command-line tool such as `cwebp`. The process would typically involve the following steps:
+## Key File Modifications
 
-1.  **Conversion and Compression**: Original images (e.g., PNG or JPEG) would be converted to WebP format.
-    *   Example command: `cwebp -q 80 input.png -o output.webp`
-    *   The `-q 80` flag sets a quality factor (0-100, where 100 is highest quality). This value would be adjusted per image.
+Apart from the new module files, the following primary files were created or significantly modified:
 
-2.  **File Size Verification**: After compression, each image's file size would be checked.
+*   `hydrocav_website_manus/index.html`: Updated to use `<picture>` elements, `data-src`/`data-srcset` attributes for images, and links to the Vite-processed SCSS and JS entry points. Image paths updated to be root-relative (e.g., `/images/logo.png`).
+*   `hydrocav_website_manus/vite.config.js`: Configuration file for Vite.
+*   `hydrocav_website_manus/package.json`: Added dependencies for Vite and npm scripts for `dev` and `build`.
+*   `hydrocav_website_manus/js/main.js`: Now imports and initializes JavaScript modules.
+*   `hydrocav_website_manus/js/modules/lazyload.js`: Updated to support `<picture>` elements, `data-srcset`, and native lazy loading.
+*   `hydrocav_website_manus/css/styles.scss`: Main SCSS file that imports all SCSS modules. Image paths within SCSS (e.g., background images) updated to be root-relative.
 
-3.  **Quality Adjustment**: If an image exceeds the 500 KB target, the compression quality (e.g., the `-q` value in `cwebp`) would be iteratively lowered and re-compressed until the file size target is met. This process requires balancing file size with visual fidelity to avoid overly degrading the image.
+## Important Notes
 
-4.  **Lossless Compression Options**: For some images, lossless WebP compression might be considered if quality degradation is a concern at the target file size with lossy compression.
-    *   Example command for lossless: `cwebp -lossless input.png -o output.webp`
-
-**Important Note**: The image files currently in the `public/img/optimized/` directory are placeholders and have not undergone this compression process. Actual image assets need to be processed and optimized according to these guidelines.
-
-## General Notes:
-
-*   A new directory `hydrocav_website_manus/public/img/optimized/` was created to store all new optimized image assets.
-*   The new WebP images listed above are currently empty placeholder files. They need to be populated with actual optimized image data and compressed according to the "Media Compression" guidelines.
-*   Lazy loading has been implemented for product images and the technology section image to improve initial page load performance. The main company overview image is assumed to be above the fold and is therefore not lazy-loaded.
+*   **Image Generation**: This project assumes that AVIF and WebP versions of the images (e.g., `/images/company-overview.avif`, `/images/company-overview.webp`) are available in the `hydrocav_website_manus/public/images/` directory. The generation of these optimized image formats is a separate process that needs to be performed.
+*   **Cache-Control Headers**: The task to set `Cache-Control` headers was skipped as it requires server-side configuration (e.g., via `.htaccess`, Nginx/Apache config) and cannot be implemented solely within the project's client-side codebase.
+EOF

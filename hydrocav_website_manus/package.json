@@ -1,0 +1,18 @@
+{
+  "name": "hydrocav_website_manus",
+  "version": "1.0.0",
+  "description": "This document tracks the changes and updates made during the 'Imagery & Media Upgrade' task for the Hydrocav website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.89.1",
+    "vite": "^6.3.5"
+  }
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HydroCav Inc. - Water Enhancement and Treatment Technology</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.scss">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -52,7 +52,11 @@
                     <p>Our mission is to utilize this patented technology to create superior water quality for a variety of uses and markets, aiming to provide safe, super-hydrating water free from harmful biological and dissolved contaminants globally.</p>
                 </div>
                 <div class="overview-image">
-                    <img src="public/img/optimized/company-overview_2x.webp" alt="HydroCav Technology" class="parallax-image img-hover-lift">
+                    <picture>
+                        <source data-srcset="/images/company-overview.avif" type="image/avif">
+                        <source data-srcset="/images/company-overview.webp" type="image/webp">
+                        <img src="#" data-src="/images/company-overview.jpg" alt="HydroCav Technology" class="parallax-image img-hover-lift" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -67,7 +71,11 @@
             <div class="product-cards">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="#" data-src="public/img/optimized/inline-unit_2x.webp" alt="Inline Unit" class="img-hover-lift" loading="lazy">
+                        <picture>
+                            <source data-srcset="/images/inline-unit.avif" type="image/avif">
+                            <source data-srcset="/images/inline-unit.webp" type="image/webp">
+                            <img src="#" data-src="/images/inline-unit.jpg" alt="Inline Unit" class="img-hover-lift" loading="lazy">
+                        </picture>
                     </div>
                     <div class="product-info">
                         <h3>Permanently Installed Inline Units</h3>
@@ -76,7 +84,11 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="#" data-src="public/img/optimized/portable-unit_2x.webp" alt="Portable Unit" class="img-hover-lift" loading="lazy">
+                        <picture>
+                            <source data-srcset="/images/portable-unit.avif" type="image/avif">
+                            <source data-srcset="/images/portable-unit.webp" type="image/webp">
+                            <img src="#" data-src="/images/portable-unit.jpg" alt="Portable Unit" class="img-hover-lift" loading="lazy">
+                        </picture>
                     </div>
                     <div class="product-info">
                         <h3>Portable Unit</h3>
@@ -85,7 +97,11 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="#" data-src="public/img/optimized/custom-unit_2x.webp" alt="Custom Unit" class="img-hover-lift" loading="lazy">
+                        <picture>
+                            <source data-srcset="/images/custom-unit.avif" type="image/avif">
+                            <source data-srcset="/images/custom-unit.webp" type="image/webp">
+                            <img src="#" data-src="/images/custom-unit.jpg" alt="Custom Unit" class="img-hover-lift" loading="lazy">
+                        </picture>
                     </div>
                     <div class="product-info">
                         <h3>Custom Variations</h3>
@@ -247,7 +263,11 @@
                     <p>The technology creates microscopic bubbles that implode, generating localized high temperatures and pressures that destroy biological contaminants while also improving water's physical properties.</p>
                 </div>
                 <div class="tech-image">
-                    <img src="#" data-src="public/img/optimized/technology_2x.webp" alt="HydroCav Technology" loading="lazy">
+                    <picture>
+                        <source data-srcset="/images/technology.avif" type="image/avif">
+                        <source data-srcset="/images/technology.webp" type="image/webp">
+                        <img src="#" data-src="/images/technology.jpg" alt="HydroCav Technology" class="parallax-image img-hover-lift" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -358,6 +378,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
 </body>
 </html>
