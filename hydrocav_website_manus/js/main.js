@@ -213,4 +213,34 @@ document.addEventListener('DOMContentLoaded', function() {
             sectionObserver.observe(section);
         }
     });
+
+    // Lazy loading for images with Intersection Observer fallback
+    if ('loading' in HTMLImageElement.prototype) {
+        // Native lazy loading is supported, ensure src is set from data-src if placeholder was used
+        const lazyImages = document.querySelectorAll('img[loading="lazy"][data-src]');
+        lazyImages.forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src'); // Clean up data-src
+        });
+    } else {
+        // Fallback to Intersection Observer
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    if (img.hasAttribute('loading')) { // Also remove loading attr if present
+                        img.removeAttribute('loading');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
 });
