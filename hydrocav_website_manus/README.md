@@ -80,4 +80,14 @@ Apart from the new module files, the following primary files were created or sig
 
 *   **Image Generation**: This project assumes that AVIF and WebP versions of the images (e.g., `/images/company-overview.avif`, `/images/company-overview.webp`) are available in the `hydrocav_website_manus/public/images/` directory. The generation of these optimized image formats is a separate process that needs to be performed.
 *   **Cache-Control Headers**: The task to set `Cache-Control` headers was skipped as it requires server-side configuration (e.g., via `.htaccess`, Nginx/Apache config) and cannot be implemented solely within the project's client-side codebase.
+
+## Accessibility Enhancements (WCAG 2.1 AA Focus)
+
+The project has undergone several updates to improve accessibility, with the goal of aligning with Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. Key improvements include:
+
+*   **Semantic HTML Structure:** Refactored `index.html` to use appropriate landmark elements such as `<header>`, `<main>`, and `<nav>`. This enhances page structure and improves navigation for users of assistive technologies.
+*   **ARIA Implementation:** Added ARIA (Accessible Rich Internet Applications) attributes to interactive components, particularly the mobile navigation menu. This includes roles like `role="button"`, and properties such as `aria-controls`, `aria-expanded`, and `aria-label` to provide better context and interactivity for screen reader users.
+*   **Visible Focus Indicators:** Implemented global CSS styles using the `:focus-visible` pseudo-class in `css/modules/base.scss`. This ensures that all interactive elements (links, buttons, form inputs, etc.) display a clear and noticeable focus ring when navigated to using a keyboard, improving usability for keyboard-only users.
+*   **Image Accessibility:** Reviewed and updated `alt` text for all images within `index.html` to ensure they provide meaningful descriptions for informative images. Decorative images would ideally have empty `alt` attributes (`alt=""`). Added `aria-label` attributes to social media links in the footer that consist only of icons, providing textual descriptions for these controls.
+*   **Enhanced Responsiveness:** Tuned typography (font sizes, line heights) and grid layouts in `css/modules/responsive.scss`, specifically for screens with a width of 360px or less. This ensures better readability and usability of content on very small mobile devices.
 EOF

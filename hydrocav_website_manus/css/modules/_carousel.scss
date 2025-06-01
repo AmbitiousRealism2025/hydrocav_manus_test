@@ -1,0 +1,82 @@
+// Testimonial Carousel SCSS Styles
+.testimonials {
+  padding: var(--section-padding);
+  background-color: var(--light-color); // Or another suitable background
+
+  .section-title h2 {
+    color: var(--dark-color); // Ensure title color contrasts with light background
+    // May need to adjust h2:after color if default doesn't fit
+    // Consider centering the title for this section if design allows
+    // text-align: center;
+    // &:after {
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    // }
+  }
+}
+
+.testimonial-swiper {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 50px; // Space for pagination
+
+  .swiper-slide {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    // Ensure consistent height for slides if content varies
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // min-height: 250px; // Example minimum height
+
+    p {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #555; // Softer text color for testimonial quote
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: auto; // Pushes attribution to the bottom if using flex
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--primary-color);
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--primary-color);
+    top: 50%; // Vertically center navigation buttons
+    transform: translateY(-50%);
+
+    &:after {
+      font-size: 24px; // Adjust size of the arrow icons
+      font-weight: 900; // Make arrows bolder
+    }
+  }
+
+  // Adjustments for smaller screens if default nav looks too big
+  // @media screen and (max-width: 768px) {
+  //   .swiper-button-next,
+  //   .swiper-button-prev {
+  //       display: none; // Optionally hide nav arrows on mobile
+  //   }
+  //   .swiper-slide {
+  //     padding: 20px;
+  //     p {
+  //       font-size: 1rem;
+  //     }
+  //     h4 {
+  //       font-size: 0.9rem;
+  //     }
+  //   }
+  // }
+}

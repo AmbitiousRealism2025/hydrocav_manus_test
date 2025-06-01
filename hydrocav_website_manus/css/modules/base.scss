@@ -67,3 +67,9 @@ p {
   margin: 0 auto;
   padding: 0 15px;
 }
+
+// Focus Visible Styling
+:is(a, button, input, textarea, select, [tabindex='0']):focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 2px;
+}
