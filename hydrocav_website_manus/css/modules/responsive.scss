@@ -1,0 +1,107 @@
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    color: var(--light-text); /* Default color, assuming navbar is not scrolled */
+    font-size: 1.5rem;
+  }
+
+  .navbar.scrolled .mobile-menu-btn { /* Color when navbar is scrolled */
+    color: var(--dark-color);
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px; /* Assuming this is the height of the scrolled navbar */
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: rgba(255, 255, 255, 0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.3s ease;
+  }
+
+  .nav-links.active { /* Class toggled by JS to show menu */
+    left: 0;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .nav-links a {
+    color: var(--dark-color); /* Links inside mobile menu should be dark */
+    font-size: 1.2rem;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  /* Adjust flex direction for stacked layout on smaller screens */
+  .overview-content,
+  .tech-content {
+    flex-direction: column;
+  }
+
+  .overview-text,
+  .overview-image,
+  .tech-text,
+  .tech-image {
+    flex: 100%; /* Take full width */
+    padding: 0; /* Reset padding if any was specific to side-by-side layout */
+    margin-bottom: 30px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-info,
+  .contact-form {
+    flex: 100%; /* Take full width */
+  }
+
+  /* Ensure product cards stack nicely */
+  .product-cards {
+    flex-direction: column;
+    align-items: center; /* Center cards when stacked */
+  }
+
+  .product-card {
+    width: 90%; /* Adjust width for smaller screens, or max-width */
+    max-width: 320px; /* Example max-width */
+  }
+
+  /* Adjust value cards stacking */
+  .value-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .value-card {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  /* Adjust stats items for smaller screens */
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-item {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
