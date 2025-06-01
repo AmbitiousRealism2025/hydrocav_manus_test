@@ -4,6 +4,9 @@ export default defineConfig({
   plugins: [
     // No sass plugin needed here, Vite has built-in support if 'sass' is installed
   ],
+  optimizeDeps: {
+    include: ['swiper', 'swiper/modules'],
+  },
   build: {
     outDir: 'dist', // Output directory for build files
     rollupOptions: {

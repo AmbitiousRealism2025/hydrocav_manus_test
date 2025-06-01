@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules'; // Correct import for modules
-import 'swiper/swiper-bundle.css'; // Or specific css files like 'swiper/css', 'swiper/css/navigation', 'swiper/css/pagination'
+import 'swiper/css/bundle'; // Or specific css files like 'swiper/css', 'swiper/css/navigation', 'swiper/css/pagination'
 
 export function initTestimonialCarousel() {
   const testimonialSwiper = new Swiper('.testimonial-swiper', {
