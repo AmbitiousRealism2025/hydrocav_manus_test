@@ -19,6 +19,8 @@ export function initMobileMenu() {
 
     mobileMenuBtn.addEventListener('click', function() {
         navLinks.classList.toggle('active');
+        const isExpanded = navLinks.classList.contains('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
     });
 }
 

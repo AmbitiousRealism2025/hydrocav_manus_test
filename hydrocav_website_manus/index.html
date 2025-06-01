@@ -10,15 +10,16 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <header class="site-header">
         <div class="container navbar-container">
             <a href="#" class="logo">HydroCav</a>
-            <div class="mobile-menu-btn">
+            <div class="mobile-menu-btn" role="button" tabindex="0" aria-controls="mainNavLinks" aria-expanded="false" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+            <nav aria-label="Main navigation">
+                <ul class="nav-links" id="mainNavLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#markets">Markets</a></li>
                 <li><a href="#value">Value</a></li>
@@ -26,9 +27,11 @@
                 <li><a href="#technology">Technology</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
+    <main>
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container hero-content">
@@ -55,7 +58,7 @@
                     <picture>
                         <source data-srcset="/images/company-overview.avif" type="image/avif">
                         <source data-srcset="/images/company-overview.webp" type="image/webp">
-                        <img src="#" data-src="/images/company-overview.jpg" alt="HydroCav Technology" class="parallax-image img-hover-lift" loading="lazy">
+                        <img src="#" data-src="/images/company-overview.jpg" alt="Advanced HydroCav water treatment system component, illustrating the technology." class="parallax-image img-hover-lift" loading="lazy">
                     </picture>
                 </div>
             </div>
@@ -266,7 +269,7 @@
                     <picture>
                         <source data-srcset="/images/technology.avif" type="image/avif">
                         <source data-srcset="/images/technology.webp" type="image/webp">
-                        <img src="#" data-src="/images/technology.jpg" alt="HydroCav Technology" class="parallax-image img-hover-lift" loading="lazy">
+                        <img src="#" data-src="/images/technology.jpg" alt="Detailed view of the patented HydroCav cavitation chamber in action." class="parallax-image img-hover-lift" loading="lazy">
                     </picture>
                 </div>
             </div>
@@ -281,6 +284,38 @@
             </div>
             <div class="mission-statement">
                 <p>HydroCav's mission is to utilize our patented technology to create superior water quality for a variety of uses and markets, aiming to provide safe, super-hydrating water free from harmful biological and dissolved contaminants globally.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+            </div>
+            <!-- Swiper -->
+            <div class="swiper testimonial-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slides will be added here -->
+                    <div class="swiper-slide testimonial-slide">
+                        <p>"HydroCav's technology significantly improved our water quality and reduced operational costs. Highly recommended!"</p>
+                        <h4>- John Doe, CEO of AquaSolutions</h4>
+                    </div>
+                    <div class="swiper-slide testimonial-slide">
+                        <p>"The portable unit is a game-changer for our mobile operations. Easy to use and incredibly effective."</p>
+                        <h4>- Jane Smith, Field Operations Manager</h4>
+                    </div>
+                    <div class="swiper-slide testimonial-slide">
+                        <p>"We've seen a noticeable difference in plant health since installing the HydroCav system. Our maintenance has also decreased."</p>
+                        <h4>- Robert Brown, Head Agronomist</h4>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
@@ -345,6 +380,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -365,10 +401,10 @@
                 <div class="footer-column">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
